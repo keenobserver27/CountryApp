@@ -1,0 +1,111 @@
+﻿<br />
+<div ng-controller="CountryDetailController">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-md-6" style="font-size:24px">
+                            Country Details
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <a href="/Home/Index"><img ng-src="{{countryDetails.flag}}" alt="Flag" width="73" height="38" /></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="col-md-6">
+                        <dl class="dl-horizontal">
+                            <dt>Name</dt>
+                            <dd>{{countryDetails.name}}</dd>
+                            <dt>Domain</dt>
+                            <dd>
+                                <ul ng-repeat="domain in countryDetails.topLevelDomain">
+                                    <li>{{domain}}</li>
+                                </ul>
+                            </dd>
+                            <dt>Alpha 2 Code</dt>
+                            <dd>{{countryDetails.alpha2Code}}</dd>
+                            <dt>Alpha 3 Code</dt>
+                            <dd>{{countryDetails.alpha3Code}}</dd>
+                            <dt>Calling Codes</dt>
+                            <dd>
+                                <ul ng-repeat="code in countryDetails.callingCodes">
+                                    <li>{{code}}</li>
+                                </ul>
+                            </dd>
+                            <dt>Capital</dt>
+                            <dd>{{countryDetails.capital}}</dd>
+                            <dt>Alt. Spellings</dt>
+                            <dd>
+                                <ul ng-repeat="spelling in countryDetails.altSpellings">
+                                    <li>{{spelling}}</li>
+                                </ul>
+                            </dd>
+                            <dt>Region</dt>
+                            <dd>{{countryDetails.region}}</dd>
+                            <dt>Subregion</dt>
+                            <dd>{{countryDetails.subregion}}</dd>
+                            <dt>Population</dt>
+                            <dd>{{countryDetails.population | number:0}}</dd>
+                            <dt>Lat. Lng.</dt>
+                            <dd>
+                                <ul ng-repeat="latlng in countryDetails.latlng">
+                                    <li>{{latlng}}</li>
+                                </ul>
+                            </dd>
+                            <dt>Demonym</dt>
+                            <dd>{{countryDetails.demonym}}</dd>
+                            <dt>Area</dt>
+                            <dd>{{countryDetails.area | number:0}}</dd>
+                            <dt>Gini</dt>
+                            <dd>{{countryDetails.gini}}</dd>
+                            <dt>Timezones</dt>
+                            <dd>
+                                <ul ng-repeat="timezone in countryDetails.timezones">
+                                    <li>{{timezone}}</li>
+                                </ul>
+                            </dd>
+                        </dl>                            
+                    </div>
+                    <div class="col-md-6">
+                        <dl class="dl-horizontal">
+                            <dt>Borders</dt>
+                            <dd>
+                                <ul ng-repeat="border in countryDetails.borders">
+                                    <li>{{border}}</li>
+                                </ul>
+                            </dd>
+                            <dt>Native Name</dt>
+                            <dd>{{countryDetails.nativeName}}</dd>
+                            <dt>Numeric Code</dt>
+                            <dd>{{countryDetails.numericCode}}</dd>
+                            <dt>Currencies</dt>
+                            <dd>
+                                <ul ng-repeat="currency in countryDetails.currencies">
+                                    <li>{{currency.code}}, {{currency.name}}, {{currency.symbol}}</li>
+                                </ul>
+                            </dd>
+                            <dt>Languages</dt>
+                            <dd>
+                                <ul ng-repeat="language in countryDetails.languages">
+                                    <li>{{language.iso639_1}}, {{language.iso639_2}}, {{language.name}}, {{language.nativeName}}</li>
+                                </ul>
+                            </dd>
+                            <dt>Translations</dt>
+                            <dd>
+                                {{countryDetails.translations.de}}, <br />{{countryDetails.translations.es}}, <br />{{countryDetails.translations.fr}}
+                            </dd>
+                            <dt>Regional Blocs</dt>
+                            <dd>
+                                <ul ng-repeat="regional in countryDetails.regionalBlocs">
+                                    <li>{{regional.acronym}}, {{regional.name}}, <br /><fieldset ng-repeat="otherAcronym in regional.otherAcronyms">{{otherAcronym}}</fieldset> <br /><fieldset ng-repeat="otherName in regional.otherNames">{{otherName}}</fieldset></li>
+                                </ul>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

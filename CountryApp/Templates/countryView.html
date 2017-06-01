@@ -1,0 +1,86 @@
+﻿
+<br />
+<div ng-controller="CountryController">
+    <div class="row">
+        <div class="col-md-12" style="padding:0px">
+            <div class="form-horizontal">
+                <div class="col-md-2">
+                    <select name="cName" ng-model="cName" ng-options="nameList.cname as nameList.cname for nameList in countryName" ng-change="ResetName()" class="form-control">
+                        <option value="">Name</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <select name="cCapital" ng-model="cCapital" ng-options="capitalList.ccapital as capitalList.ccapital for capitalList in countryCapital" ng-change="ResetCapital()" class="form-control">
+                        <option value="">Capital</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <select name="cRegion" ng-model="cRegion" ng-options="regionList.cregion as regionList.cregion for regionList in countryRegion" ng-change="ResetRegion()" class="form-control">
+                        <option value="">Region</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <select name="cSubRegion" ng-model="cSubRegion" ng-options="subregionList.csubregion as subregionList.csubregion for subregionList in countrySubregion" ng-change="ResetSubRegion()" class="form-control">
+                        <option value="">Subregion</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group has-feedback">
+                        <input type="text" class="form-control" placeholder="Search" ng-model="searchAnyField" id="searchBox" autofocus>
+                        <span class="glyphicon glyphicon-search form-control-feedback searchIcon"></span>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <a ng-click="ClearSearchBox()" class="btn btn-default" set-focus="searchBox">
+                        <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <table class="table table-striped">
+        <tr>
+            <th>Flag</th>
+            <th>Name</th>
+            <th>Capital</th>
+            <th>Region</th>
+            <th>Subregion</th>
+            <th>Population</th>
+            <th>Native Name</th>
+            <th></th>
+        </tr>
+        <tr ng-repeat="c in countries | filter:{name:cName} | filter:{capital:cCapital} | filter:{region:cRegion} | filter:{subregion:cSubRegion} | filter:searchAnyField" class="text-left">
+            <td><img ng-src="{{c.flag}}" ng-click="GetCountryDetails(c)" alt="Flag" width="73" height="38" style="border:1px solid;" /></td>
+            <td>{{c.name}}</td>
+            <td>{{c.capital}}</td>
+            <td>{{c.region}}</td>
+            <td>{{c.subregion}}</td>
+            <td class="text-right">{{c.population | number:0}}</td>
+            <td>{{c.nativeName}}</td>
+            <td>
+                <a href="#" class="glyphicon glyphicon-info-sign" ng-click="GetCountryDetails(c)"></a>
+            </td>
+            <!--<td>
+                <ul ng-repeat="border in c.borders">
+                    <li>{{border}}</li>
+                </ul>
+            </td>
+            <td>
+                <ul ng-repeat="currency in c.currencies">
+                    <li>{{currency.code}}, {{currency.name}}, {{currency.symbol}}</li>
+                </ul>
+            </td>
+            <td>
+                <ul ng-repeat="language in c.languages">
+                    <li>{{language.iso639_1}}, {{language.iso639_2}}, {{language.name}}, {{language.nativeName}}</li>
+                </ul>
+            </td>
+            <td>{{c.translations.de}},<br />{{c.translations.es}},<br />{{c.translations.fr}}</td>
+            <td>
+                <ul ng-repeat="region in c.regionalBlocs">
+                    <li>{{region.acronym}}, {{region.name}}</li>
+                </ul>
+            </td>-->
+        </tr>
+    </table>
+</div>
